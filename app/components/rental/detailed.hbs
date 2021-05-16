@@ -8,6 +8,7 @@
   >
     Share on Twitter
   </ShareButton>
+  <LinkTo @route="edit" @model={{@rental}} class="edit button">Edit Listing</LinkTo>
 </Jumbo>
 
 <article class="rental detailed">
@@ -37,8 +38,8 @@
   </div>
 
   <Map
-    @lat={{@rental.location.lat}}
-    @lng={{@rental.location.lng}}
+    @lat={{@rental.lat}}
+    @lng={{@rental.lng}}
     @zoom="12"
     @width="894"
     @height="600"

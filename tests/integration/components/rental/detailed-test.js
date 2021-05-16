@@ -13,10 +13,8 @@ module('Integration | Component | rental/detailed', function (hooks) {
         title: 'Grand Old Mansion',
         owner: 'Veruca Salt',
         city: 'San Francisco',
-        location: {
-          lat: 37.7749,
-          lng: -122.4194,
-        },
+        lat: 37.7749,
+        lng: -122.4194,
         category: 'Estate',
         type: 'Standalone',
         bedrooms: 15,
@@ -28,7 +26,7 @@ module('Integration | Component | rental/detailed', function (hooks) {
     });
   });
 
-  test('it renders a header with a share button', async function (assert) {
+  test('it renders a header with a share button and edit button', async function (assert) {
     await render(hbs`<Rental::Detailed @rental={{this.rental}} />`);
 
     assert.dom('.jumbo').exists();
@@ -37,6 +35,10 @@ module('Integration | Component | rental/detailed', function (hooks) {
       .dom('.jumbo p')
       .containsText('a nice place to stay near San Francisco');
     assert.dom('.jumbo a.button').containsText('Share on Twitter');
+    assert.dom('.jumbo a.button.edit').containsText('Edit Listing');
+    assert
+      .dom('.jumbo a.button.edit')
+      .hasAttribute('href', '/rentals/grand-old-mansion/edit');
   });
 
   test('it renders detailed information about a rental property', async function (assert) {

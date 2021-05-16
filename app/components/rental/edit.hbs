@@ -1,0 +1,12 @@
+<Jumbo>
+  <h2>Edit {{@rental.title}}</h2>
+  <p>Update this listing below.</p>
+  <LinkTo @route="rental" @model={{@rental}} class="button">Cancel</LinkTo>
+</Jumbo>
+{{#form-for @rental as |f|}}
+  {{f.text-field "title"}}
+  {{f.text-field "owner"}}
+
+  {{f.reset  "Clear form"}}
+  {{f.submit "Create account"}}
+{{/form-for}}

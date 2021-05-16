@@ -4,10 +4,8 @@ export default [
     title: 'Grand Old Mansion',
     owner: 'Veruca Salt',
     city: 'San Francisco',
-    location: {
-      lat: 37.7749,
-      lng: -122.4194,
-    },
+    lat: 37.7749,
+    lng: -122.4194,
     category: 'Estate',
     bedrooms: 15,
     image:

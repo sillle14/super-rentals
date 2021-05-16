@@ -33,10 +33,8 @@ export default function () {
             title: 'Grand Old Mansion',
             owner: 'Veruca Salt',
             city: 'San Francisco',
-            location: {
-              lat: 37.7749,
-              lng: -122.4194,
-            },
+            lat: 37.7749,
+            lng: -122.4194,
             category: 'Estate',
             bedrooms: 15,
             image:
@@ -52,10 +50,8 @@ export default function () {
             title: 'Urban Living',
             owner: 'Mike Teavee',
             city: 'Seattle',
-            location: {
-              lat: 47.6062,
-              lng: -122.3321,
-            },
+            lat: 47.6062,
+            lng: -122.3321,
             category: 'Condo',
             bedrooms: 1,
             image:
@@ -71,10 +67,8 @@ export default function () {
             title: 'Downtown Charm',
             owner: 'Violet Beauregarde',
             city: 'Portland',
-            location: {
-              lat: 45.5175,
-              lng: -122.6801,
-            },
+            lat: 45.5175,
+            lng: -122.6801,
             category: 'Apartment',
             bedrooms: 3,
             image:
@@ -96,10 +90,8 @@ export default function () {
           title: 'Grand Old Mansion',
           owner: 'Veruca Salt',
           city: 'San Francisco',
-          location: {
-            lat: 37.7749,
-            lng: -122.4194,
-          },
+          lat: 37.7749,
+          lng: -122.4194,
           category: 'Estate',
           bedrooms: 15,
           image:

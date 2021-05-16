@@ -147,6 +147,11 @@ module('Integration | Component | rentals', function (hooks) {
 
     assert.dom('.rentals .results').exists();
     assert.dom('.rentals .results li').exists({ count: 2 });
-    assert.dom('.rentals .results li').containsText('Downtown Charm');
+
+    // The order of the listings is the order they are mocked above.
+    assert.dom('.rentals .results li:first-child').containsText('Urban Living');
+    assert
+      .dom('.rentals .results li:nth-child(2)')
+      .containsText('Downtown Charm');
   });
 });

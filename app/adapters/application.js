@@ -1,9 +1,6 @@
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
-  namespace = 'api';
-
-  buildURL(...args) {
-    return `${super.buildURL(...args)}.json`;
-  }
+  // Expects the Rails API running locally at port 3000.
+  host = 'http://localhost:3000';
 }

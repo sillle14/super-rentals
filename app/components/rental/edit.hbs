@@ -1,12 +1,26 @@
 <Jumbo>
-  <h2>Edit {{@rental.title}}</h2>
+  <h2>Edit {{this.staticTitle}}</h2>
   <p>Update this listing below.</p>
-  <LinkTo @route="rental" @model={{@rental}} class="button">Cancel</LinkTo>
+  <LinkTo @route="rental" @model={{@rental}} class="button">Back</LinkTo>
 </Jumbo>
-{{#form-for @rental as |f|}}
-  {{f.text-field "title"}}
-  {{f.text-field "owner"}}
+<div class="form-container">
+  {{#form-for @rental submit=(action save) reset=(action cancel) class="edit-form" as |f|}}
+    {{f.text-field "title" required}}
+    <div class="form-field">
+      <label for="slug">Slug</label>
+      <input type="text" id="slug" value={{@rental.slug}} disabled aria-disabled="true" >
+    </div>
+    {{f.text-field "owner" required}}
+    {{f.text-field "category" required}}
+    {{f.text-field "bedrooms" required}}
+    {{f.text-field "image" required label="Image URL"}}
+    {{f.textarea-field "description" required}}
+    {{f.number-field "lat" required}}
+    {{f.number-field "lng" required}}
 
-  {{f.reset  "Clear form"}}
-  {{f.submit "Create account"}}
-{{/form-for}}
+    <div class="form-buttons">
+      {{f.reset "Reset" class="button reset-button"}}
+      {{f.submit "Submit" class="button"}}
+    </div>
+  {{/form-for}}
+</div>

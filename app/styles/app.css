@@ -522,7 +522,3 @@ form.edit-form label:after { content: ":"; }
 .reset-button {
   background-color: rgb(197, 37, 37)
 }
-
-.button.loading {
-  background-color: grey;
-}

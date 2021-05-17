@@ -1,11 +1,11 @@
 <Jumbo>
   <h2>New Listing</h2>
   <p>Fill in the form to create a listing.</p>
-  <LinkTo @route="index" class="button">Back</LinkTo>
+  <button class="button" {{on "click" this.back}}>Back</button>
 </Jumbo>
 {{!-- TODO: Don't duplicate this form between edit and create --}}
 <div class="form-container">
-  {{#form-for @rental submit=(action save) reset=(action cancel) class="edit-form" as |f|}}
+  {{#form-for @rental submit=(action this.save) reset=(action this.clear) class="edit-form" as |f|}}
     {{f.text-field "title" required}}
     {{f.text-field "owner" required}}
     {{f.text-field "city" required}}
@@ -18,7 +18,7 @@
 
     <div class="form-buttons">
       {{f.reset "Clear" class="button reset-button"}}
-      {{f.submit "Submit" class=(if this.loading "button loading" "button")}}
+      {{f.submit "Submit" class="button"}}
     </div>
   {{/form-for}}
 </div>

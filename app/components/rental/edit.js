@@ -1,10 +1,11 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 export default class RentalEditComponent extends Component {
+  @service router;
   @tracked staticTitle;
-  @tracked loading = false;
 
   constructor(...args) {
     super(...args);
@@ -14,17 +15,14 @@ export default class RentalEditComponent extends Component {
   }
 
   @action save() {
-    // TODO: Enable editing the slug.
     let { rental } = this.args;
-    this.loading = true;
+    // TODO: Handle updating slug.
     rental
       .save()
       .then(() => {
-        this.staticTitle = rental.title;
-        this.loading = false;
+        this.router.transitionTo('rental', rental);
       })
       .catch((e) => {
-        this.loading = false;
         console.log(e);
       });
   }
@@ -32,5 +30,6 @@ export default class RentalEditComponent extends Component {
   @action cancel() {
     let { rental } = this.args;
     rental.rollbackAttributes();
+    this.router.transitionTo('rental', rental);
   }
 }

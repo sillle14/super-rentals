@@ -1,10 +1,10 @@
 <Jumbo>
   <h2>Edit {{this.staticTitle}}</h2>
   <p>Update this listing below.</p>
-  <LinkTo @route="rental" @model={{@rental}} class="button">Back</LinkTo>
+  <button class="button" {{on "click" this.cancel}}>Back</button>
 </Jumbo>
 <div class="form-container">
-  {{#form-for @rental submit=(action save) reset=(action cancel) class="edit-form" as |f|}}
+  {{#form-for @rental submit=(action this.save) reset=(action this.cancel) class="edit-form" as |f|}}
     {{f.text-field "title" required}}
     {{f.text-field "owner" required}}
     {{f.text-field "city" required}}

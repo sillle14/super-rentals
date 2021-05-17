@@ -17,5 +17,8 @@ module('Integration | Component | rental/create', function (hooks) {
     await render(hbs`<Rental::Create @rental={{this.rental}} />`);
 
     assert.dom('form').exists();
+    assert.dom('h2').hasText('New Listing');
+
+    // TODO: Test create behavior.
   });
 });

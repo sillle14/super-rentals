@@ -33,5 +33,8 @@ module('Integration | Component | rental/edit', function (hooks) {
     await render(hbs`<Rental::Edit @rental={{this.rental}} />`);
 
     assert.dom('form').exists();
+    assert.dom('h2').hasText('Edit Grand Old Mansion');
+
+    // TODO: Test edit behavior.
   });
 });

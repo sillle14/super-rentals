@@ -3,24 +3,21 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | rental/form', function(hooks) {
+module('Integration | Component | rental/form', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  hooks.beforeEach(function () {
+    this.setProperties({ rental: {}, save: () => {}, cancel: () => {} });
+  });
+
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Rental::Form />`);
+    await render(
+      hbs`<Rental::Form @rental={{this.rental}} @save={{this.save}} @cancel={{this.cancel}}/>`
+    );
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <Rental::Form>
-        template block text
-      </Rental::Form>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('.form-container').exists();
   });
 });

@@ -1,0 +1,18 @@
+<div class="form-container">
+  {{#form-for @rental submit=(action @save) reset=(action @cancel) class="edit-form" as |f|}}
+    {{f.text-field "title" required}}
+    {{f.text-field "owner" required}}
+    {{f.text-field "city" required}}
+    {{f.text-field "category" required}}
+    {{f.number-field "bedrooms" required}}
+    {{f.text-field "image" required label="Image URL"}}
+    {{f.textarea-field "description" required}}
+    {{f.number-field "lat" required label="Latitude" step="0.0001"}}
+    {{f.number-field "lng" required label="Longitude" step="0.0001"}}
+
+    <div class="form-buttons">
+      {{f.reset "Clear" class="button reset-button"}}
+      {{f.submit "Submit" class="button"}}
+    </div>
+  {{/form-for}}
+</div>

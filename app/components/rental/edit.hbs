@@ -3,21 +3,4 @@
   <p>Update this listing below.</p>
   <button class="button" {{on "click" this.cancel}}>Back</button>
 </Jumbo>
-<div class="form-container">
-  {{#form-for @rental submit=(action this.save) reset=(action this.cancel) class="edit-form" as |f|}}
-    {{f.text-field "title" required}}
-    {{f.text-field "owner" required}}
-    {{f.text-field "city" required}}
-    {{f.text-field "category" required}}
-    {{f.number-field "bedrooms" required}}
-    {{f.text-field "image" required label="Image URL"}}
-    {{f.textarea-field "description" required}}
-    {{f.number-field "lat" required label="Latitude" step="0.0001"}}
-    {{f.number-field "lng" required label="Longitude" step="0.0001"}}
-
-    <div class="form-buttons">
-      {{f.reset "Reset" class="button reset-button"}}
-      {{f.submit "Submit" class=(if this.loading "button loading" "button")}}
-    </div>
-  {{/form-for}}
-</div>
+<Rental::Form @rental={{@rental}} @save={{this.save}} @cancel={{this.cancel}} />

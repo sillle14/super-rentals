@@ -23,7 +23,7 @@ export default class RentalCreateComponent extends Component {
     this.router.transitionTo('index');
   }
 
-  @action clear() {
+  @action cancel() {
     // Clear each attribute.
     // Note that rollback will mark the object as isDeleted, which is not
     //  the goal here.

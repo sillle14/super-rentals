@@ -1,27 +1,22 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
-export default class RentalEditComponent extends Component {
-  @tracked staticTitle;
+export default class RentalCreateComponent extends Component {
   @tracked loading = false;
-
-  constructor(...args) {
-    super(...args);
-    let { rental } = this.args;
-    // Fix the title at the start so it doesn't change as the user fills the form.
-    this.staticTitle = rental.title;
-  }
+  @service router;
 
   @action save() {
-    // TODO: Enable editing the slug.
     let { rental } = this.args;
     this.loading = true;
+    // rental.id = this.slugify(rental.title);
     rental
       .save()
       .then(() => {
         this.staticTitle = rental.title;
         this.loading = false;
+        // TODO: Send to the listing page on successful creation
       })
       .catch((e) => {
         this.loading = false;

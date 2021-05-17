@@ -484,6 +484,7 @@ p {
   display: flex;
   flex-direction: column;
   width: 100%;
+
 }
 
 form * {
@@ -496,10 +497,19 @@ input[type=text], input[type=number], textarea {
   width: 70%;
 }
 
+label {
+  width: 30%;
+}
+
 .form-field {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-field--errors {
+  margin: 0 auto;
 }
 
 form.edit-form label:after { content: ":"; }

@@ -17,12 +17,11 @@ export default class LoginController extends Controller {
         identification,
         password
       );
+      // If the user authenticates, they will be automatically redirected
+      //  to the home page based on the route.
     } catch (error) {
+      console.log(error);
       this.errorMessage = error.error || error;
-    }
-
-    if (this.session.isAuthenticated) {
-      // What to do with all this success?
     }
   }
 

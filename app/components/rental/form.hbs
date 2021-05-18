@@ -1,5 +1,5 @@
-<div class="form-container">
-  {{#form-for @rental submit=(action @save) reset=(action @cancel) class="edit-form" as |f|}}
+<div class="form-container rental-form">
+  {{#form-for @rental submit=(action @save) reset=(action @cancel) as |f|}}
     {{f.text-field "title" required}}
     {{f.text-field "owner" required}}
     {{f.text-field "city" required}}

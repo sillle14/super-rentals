@@ -20,8 +20,7 @@ export default class LoginController extends Controller {
       // If the user authenticates, they will be automatically redirected
       //  to the home page based on the route.
     } catch (error) {
-      console.log(error);
-      this.errorMessage = error.error || error;
+      this.errorMessage = error.responseJSON.error;
     }
   }
 

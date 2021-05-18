@@ -1,4 +1,7 @@
 <div class="jumbo">
-  <div class="right tomster"></div>
+  {{#if @hideImage}}
+  {{else}}
+    <div class="right tomster"></div>
+  {{/if}}
   {{yield}}
 </div>

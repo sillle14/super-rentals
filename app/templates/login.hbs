@@ -1,10 +1,22 @@
-<form {{on "submit" this.authenticate}}>
-  <label for="identification">Login</label>
-  <input id='identification' placeholder="Enter Login" value={{this.identification}} {{on "change" this.updateIdentification}}>
-  <label for="password">Password</label>
-  <input id='password' placeholder="Enter Password" value={{this.password}} {{on "change" this.updatePassword}}>
-  <button type="submit">Login</button>
-  {{#if this.errorMessage}}
-    <p>{{this.errorMessage}}</p>
-  {{/if}}
-</form>
+<Jumbo @hideImage={{true}}>
+  <h2>Login</h2>
+  <p>Authentication is mocked by the Rails server. Use username "lewis" and password "secret".</p>
+</Jumbo>
+<div class="form-container login-form">
+  <form {{on "submit" this.authenticate}}>
+    <div class="form-field">
+      <label for="identification">Login</label>
+      <input id='identification' placeholder="Enter Login" value={{this.identification}} {{on "change" this.updateIdentification}}>
+    </div>
+    <div class="form-field">
+      <label for="password">Password</label>
+      <input id='password' placeholder="Enter Password" value={{this.password}} {{on "change" this.updatePassword}} type="password">
+    </div>
+    {{#if this.errorMessage}}
+      <p>Error logging in: {{this.errorMessage}}</p>
+    {{/if}}
+    <div class="form-buttons">
+      <button class="button" type="submit">Login</button>
+    </div>
+  </form>
+</div>

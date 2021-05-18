@@ -2,10 +2,18 @@ import { module, test } from 'qunit';
 import { click, find, visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import {
+  authenticateSession,
+  invalidateSession,
+} from 'ember-simple-auth/test-support';
 
 module('Acceptance | super rentals', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
+
+  hooks.beforeEach(async function () {
+    await authenticateSession();
+  });
 
   test('visiting /', async function (assert) {
     await visit('/');
@@ -93,6 +101,17 @@ module('Acceptance | super rentals', function (hooks) {
     assert.equal(currentURL(), '/getting-in-touch');
 
     await click('nav a.menu-index');
+    assert.equal(currentURL(), '/');
+  });
+
+  test('logging out and logging back in', async function (assert) {
+    // Logging out should ensure the user is redirected to the login page.
+    await invalidateSession();
+    await visit('/');
+    assert.equal(currentURL(), '/login');
+
+    // Logging in will automatically redirect to the home page.
+    await authenticateSession();
     assert.equal(currentURL(), '/');
   });
 });
